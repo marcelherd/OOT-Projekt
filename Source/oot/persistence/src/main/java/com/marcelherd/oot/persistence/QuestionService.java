@@ -11,6 +11,10 @@ import com.marcelherd.oot.persistence.model.Question.Difficulty;
  * @author Marcel Herd
  */
 public class QuestionService implements QuestionRepository {
+	
+	protected QuestionService() {
+		
+	}
 
 	public void save(Question entity) {
 		// TODO Auto-generated method stub
