@@ -1,4 +1,4 @@
-package com.marcelherd.gui;
+package com.marcelherd.oot.editor;
 
 /**
  * Hello world!

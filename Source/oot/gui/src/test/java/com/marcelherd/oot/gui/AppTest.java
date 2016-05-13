@@ -1,4 +1,4 @@
-package com.marcelherd.gui;
+package com.marcelherd.oot.gui;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

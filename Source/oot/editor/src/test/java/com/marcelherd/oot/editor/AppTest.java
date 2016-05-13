@@ -1,4 +1,4 @@
-package com.marcelherd.persistence;
+package com.marcelherd.oot.editor;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

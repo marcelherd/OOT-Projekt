@@ -1,4 +1,4 @@
-package com.marcelherd.editor;
+package com.marcelherd.oot.persistence;
 
 /**
  * Hello world!
