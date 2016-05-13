@@ -28,7 +28,6 @@ public class Database {
 	 */
 	public static Connection getConnection() {
 		try {
-			dataSource.setUrl("jdbc:sqlite::resource:database.sqlite");
 			return dataSource.getConnection();
 		} catch (SQLException e) {
 			return null;
