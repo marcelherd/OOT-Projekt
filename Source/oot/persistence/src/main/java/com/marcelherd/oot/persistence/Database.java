@@ -5,6 +5,12 @@ import java.sql.SQLException;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
+/**
+ * This class provides access to a database connection.
+ * Connections are stored within a connection pool.
+ * 
+ * @author Marcel Herd
+ */
 public class Database {
 
 	private static BasicDataSource dataSource;
@@ -15,6 +21,11 @@ public class Database {
 		dataSource.setUrl("jdbc:sqlite::resource:database.sqlite");
 	}
 
+	/**
+	 * Returns the connection to the database.
+	 * 
+	 * @return the connection to the database
+	 */
 	public static Connection getConnection() {
 		try {
 			dataSource.setUrl("jdbc:sqlite::resource:database.sqlite");

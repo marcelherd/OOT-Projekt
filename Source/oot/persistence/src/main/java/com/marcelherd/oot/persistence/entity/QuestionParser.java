@@ -7,8 +7,20 @@ import java.util.List;
 
 import com.marcelherd.oot.persistence.entity.Question.Difficulty;
 
+/**
+ * This class provides helper methods to create Question objects
+ * from the ResultSet obtained by the database.
+ * 
+ * @author Marcel Herd
+ */
 public class QuestionParser {
 	
+	/**
+	 * Returns the Question obtained by the resultSet.
+	 * 
+	 * @param resultSet - query result from the DBMS.
+	 * @return the Question obtained the the resultSet
+	 */
 	public static Question parseOne(ResultSet resultSet) {
 		try {
 			Long id = resultSet.getLong("id");
@@ -18,22 +30,7 @@ public class QuestionParser {
 			String answerC = resultSet.getString("answerC");
 			String answerD = resultSet.getString("answerD");
 			String correctAnswer = resultSet.getString("correctAnswer");
-			String difficultyString = resultSet.getString("difficulty");
-			Difficulty difficulty = null;
-			switch (difficultyString) {
-			case "EASY":
-				difficulty = Difficulty.EASY;
-				break;
-			case "MEDIUM":
-				difficulty = Difficulty.MEDIUM;
-				break;
-			case "HARD":
-				difficulty = Difficulty.HARD;
-				break;
-			case "VERY_HARD":
-				difficulty = Difficulty.VERY_HARD;
-				break;
-			}
+			Difficulty difficulty = Difficulty.valueOf(resultSet.getString("difficulty"));
 			return new Question(id, question, answerA, answerB, answerC, answerD, correctAnswer, difficulty);
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -42,6 +39,12 @@ public class QuestionParser {
 		}
 	}
 	
+	/**
+	 * Returns all Questions obtained by the resultSet.
+	 * 
+	 * @param resultSet - query result from the DBMS.
+	 * @return all Questions obtained by the resultSet
+	 */
 	public static List<Question> parseAll(ResultSet resultSet) {
 		try {
 			List<Question> questions = new ArrayList<Question>();

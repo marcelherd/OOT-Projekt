@@ -14,7 +14,8 @@ import com.marcelherd.oot.persistence.entity.Question.Difficulty;
 import com.marcelherd.oot.persistence.entity.QuestionParser;
 
 /**
- * TODO javadoc
+ * This service class implements methods to interfact
+ * with question domain types.
  * 
  * @author Marcel Herd
  */
@@ -24,6 +25,9 @@ public class QuestionService implements QuestionRepository {
 
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Question findOne(Long id) {
 		try (Connection connection = Database.getConnection();
@@ -36,6 +40,9 @@ public class QuestionService implements QuestionRepository {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Question> findAll() {
 		try (Connection connection = Database.getConnection();
@@ -48,6 +55,9 @@ public class QuestionService implements QuestionRepository {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Question> findAll(Iterable<Long> ids) {
 		String joined = StreamSupport.stream(ids.spliterator(), false).map(l -> Long.toString(l))
@@ -63,6 +73,9 @@ public class QuestionService implements QuestionRepository {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Long count() {
 		try (Connection connection = Database.getConnection();
@@ -75,6 +88,9 @@ public class QuestionService implements QuestionRepository {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Question> findByDifficulty(Difficulty difficulty) {
 		try (Connection connection = Database.getConnection();

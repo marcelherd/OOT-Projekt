@@ -6,7 +6,8 @@ import com.marcelherd.oot.persistence.entity.Question;
 import com.marcelherd.oot.persistence.entity.Question.Difficulty;
 
 /**
- * TODO javadoc
+ * This interface defines the methods to interact with the question
+ * domain type on the database.
  * 
  * @author Marcel Herd
  */
