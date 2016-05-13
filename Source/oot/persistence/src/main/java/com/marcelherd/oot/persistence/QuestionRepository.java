@@ -12,6 +12,11 @@ import com.marcelherd.oot.persistence.model.Question.Difficulty;
  */
 public interface QuestionRepository extends Repository<Question, Long> {
 	
+	@Override
+	default void delete(Question entity) {
+		delete(entity.getId());
+	}
+	
 	List<Question> findByDifficulty(Difficulty difficulty);
 	
 }

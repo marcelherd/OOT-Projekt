@@ -16,54 +16,46 @@ public class QuestionService implements QuestionRepository {
 		
 	}
 
+	@Override
 	public void save(Question entity) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void save(Iterable<Question> entities) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	@Override
 	public Question findOne(Long primaryKey) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Question> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<Question> findAll(Iterable<Long> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public List<Question> findByDifficulty(Difficulty difficulty) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	@Override
 	public Long count() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void delete(Question entity) {
+	@Override
+	public List<Question> findByDifficulty(Difficulty difficulty) {
 		// TODO Auto-generated method stub
-		
-	}
-
-	public void delete(Iterable<Question> entities) {
-		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

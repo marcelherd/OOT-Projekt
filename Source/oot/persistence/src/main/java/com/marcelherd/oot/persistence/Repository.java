@@ -17,7 +17,11 @@ public interface Repository<T extends Entity, ID extends Serializable> {
 	
 	void save(T entity);
 	
-	void save(Iterable<T> entities);
+	default void save(Iterable<T> entities) {
+		for (T entity : entities) {
+			save(entity);
+		}
+	}
 	
 	T findOne(ID primaryKey);
 	
@@ -31,6 +35,10 @@ public interface Repository<T extends Entity, ID extends Serializable> {
 	
 	void delete(T entity);
 	
-	void delete(Iterable<T> entities);
+	default void delete(Iterable<T> entities) {
+		for (T entity : entities) {
+			delete(entity);
+		}
+	}
 
 }
