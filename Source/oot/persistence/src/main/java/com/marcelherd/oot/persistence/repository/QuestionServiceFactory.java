@@ -1,4 +1,4 @@
-package com.marcelherd.oot.persistence;
+package com.marcelherd.oot.persistence.repository;
 
 /**
  * TODO javadoc

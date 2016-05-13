@@ -1,4 +1,4 @@
-package com.marcelherd.oot.persistence.model;
+package com.marcelherd.oot.persistence.entity;
 
 import java.io.Serializable;
 

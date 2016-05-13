@@ -2,9 +2,9 @@ package com.marcelherd.oot.gui;
 
 import java.util.List;
 
-import com.marcelherd.oot.persistence.QuestionService;
-import com.marcelherd.oot.persistence.QuestionServiceFactory;
-import com.marcelherd.oot.persistence.model.Question;
+import com.marcelherd.oot.persistence.entity.Question;
+import com.marcelherd.oot.persistence.repository.QuestionService;
+import com.marcelherd.oot.persistence.repository.QuestionServiceFactory;
 
 /**
  * Hello world!
