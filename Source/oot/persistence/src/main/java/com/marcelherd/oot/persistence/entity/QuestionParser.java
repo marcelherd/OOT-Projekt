@@ -18,7 +18,7 @@ public class QuestionParser {
 	/**
 	 * Returns the Question obtained by the resultSet.
 	 * 
-	 * @param resultSet - query result from the DBMS.
+	 * @param resultSet - query result from the database
 	 * @return the Question obtained the the resultSet
 	 */
 	public static Question parseOne(ResultSet resultSet) {
@@ -42,7 +42,7 @@ public class QuestionParser {
 	/**
 	 * Returns all Questions obtained by the resultSet.
 	 * 
-	 * @param resultSet - query result from the DBMS.
+	 * @param resultSet - query result from the database
 	 * @return all Questions obtained by the resultSet
 	 */
 	public static List<Question> parseAll(ResultSet resultSet) {
