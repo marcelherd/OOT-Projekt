@@ -1,6 +1,6 @@
 # OOT-Projekt
 
-[![Build Status](http://shishigami.eu:8080/buildStatus/icon?job=WerWirdMillionaer)](http://shishigami.eu:8080/job/WerWirdMillionaer?style=plastic)
+[![Build Status](https://travis-ci.org/marcelherd/OOT-Projekt.svg?branch=master)](https://travis-ci.org/marcelherd/OOT-Projekt)
 
 OOT Semesterprojekt IB15/16 der Gruppe "Millionär".
 
