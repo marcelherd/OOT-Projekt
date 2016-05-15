@@ -3,3 +3,6 @@ jdk:
   - oraclejdk8
 before_script: cd Source/oot/
 script: mvn package
+cache:
+  directories:
+  - $HOME/.m2
