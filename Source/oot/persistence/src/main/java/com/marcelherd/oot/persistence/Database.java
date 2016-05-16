@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 /**
- * This class provides access to a database connection.
+ * This class provides access to a database connection using JDBC.
  * Connections are stored within a connection pool.
  * 
  * @author Marcel Herd

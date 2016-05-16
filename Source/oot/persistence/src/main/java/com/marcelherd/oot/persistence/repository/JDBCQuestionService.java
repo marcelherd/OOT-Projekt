@@ -11,17 +11,16 @@ import java.util.stream.StreamSupport;
 import com.marcelherd.oot.persistence.Database;
 import com.marcelherd.oot.persistence.entity.Question;
 import com.marcelherd.oot.persistence.entity.Question.Difficulty;
-import com.marcelherd.oot.persistence.entity.QuestionParser;
 
 /**
- * This service class implements methods to interfact
- * with question domain types.
+ * This service class implements methods to look up
+ * question domain types in a database using JDBC.
  * 
  * @author Marcel Herd
  */
-public class QuestionService implements QuestionRepository {
+public class JDBCQuestionService implements QuestionRepository {
 
-	protected QuestionService() {
+	protected JDBCQuestionService() {
 
 	}
 	
@@ -33,7 +32,7 @@ public class QuestionService implements QuestionRepository {
 		try (Connection connection = Database.getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM questions WHERE id = " + id)) {
-			return QuestionParser.parseOne(resultSet);
+			return JDBCQuestionParser.parseOne(resultSet);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -48,7 +47,7 @@ public class QuestionService implements QuestionRepository {
 		try (Connection connection = Database.getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM questions")) {
-			return QuestionParser.parseAll(resultSet);
+			return JDBCQuestionParser.parseAll(resultSet);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -66,7 +65,7 @@ public class QuestionService implements QuestionRepository {
 		try (Connection connection = Database.getConnection();
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM questions WHERE id IN ( " + joined + ")")) {
-			return QuestionParser.parseAll(resultSet);
+			return JDBCQuestionParser.parseAll(resultSet);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -97,7 +96,7 @@ public class QuestionService implements QuestionRepository {
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement
 						.executeQuery("SELECT * FROM questions WHERE difficulty='" + difficulty.name() + "'")) {
-			return QuestionParser.parseAll(resultSet);
+			return JDBCQuestionParser.parseAll(resultSet);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

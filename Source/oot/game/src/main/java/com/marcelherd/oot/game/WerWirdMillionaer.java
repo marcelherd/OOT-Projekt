@@ -1,73 +1,57 @@
 package com.marcelherd.oot.game;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import com.marcelherd.oot.game.Game.Difficulty;
 import com.marcelherd.oot.persistence.entity.Question;
 
-public class WerWirdMillionaer {
+/**
+ * Example usage:
+ * <pre>
+ * {@code
+ *    WerWirdMillionaer game = new MillionaerGame();
+ *    game.start(Difficulty.EASY);
+ *    while (game.playing()) {
+ *       Question question = game.currentQuestion();
+ *       String input;
+ *       boolean correct = game.answer(input);
+ *       if (! correct) { // antwort als rot markieren, ton abspielen... }
+ *    }
+ *    
+ * }
+ * </pre>
+ * 
+ * @author Marcel Herd
+ */
+public interface WerWirdMillionaer {
 	
-	private static final int MAX_QUESTIONS = 15;
+	/**
+	 * Starts the game with the given difficulty and returns the first question.
+	 * 
+	 * @param difficulty - determines the difficulty of the game
+	 * @return the first question
+	 */
+	Question start(Difficulty difficulty);
 	
-	private MillionaerQuestionCatalog questionCatalog;
-
-	private List<Question> questions;
+	/**
+	 * Returns the current question or null if the game hasn't started yet.
+	 * 
+	 * @return the current question or null if the game hasn't started yet
+	 */
+	Question currentQuestion();
 	
-	private int currentQuestion = 0;
+	/**
+	 * Returns true if answer is the correct answer.
+	 * The game will end if the wrong answer is given.
+	 * 
+	 * @param answer - given answer to the current question
+	 * @return true if answer is the correct answer
+	 */
+	boolean answer(String answer);
 	
-	public WerWirdMillionaer(MillionaerQuestionCatalog questionCatalog) {
-		this.questionCatalog = questionCatalog;
-	}
-
-	public void restart(Difficulty difficulty) {
-		shuffleQuestions();
-		questions = new ArrayList<Question>();
-		questionCatalog.getEasyQuestions().stream().limit(difficulty.easyQuestions).forEach(q -> questions.add(q));
-		questionCatalog.getMediumQuestions().stream().limit(difficulty.mediumQuestions).forEach(q -> questions.add(q));
-		questionCatalog.getHardQuestions().stream().limit(difficulty.hardQuestions).forEach(q -> questions.add(q));
-		questionCatalog.getVeryHardQuestions().stream().limit(difficulty.veryHardQuestions).forEach(q -> questions.add(q));
-	}
-
-	public Question currentQuestion() {
-		if (questions == null) return null;
-		return questions.get(currentQuestion);
-	}
-	
-	public Question next() {
-		if (currentQuestion == MAX_QUESTIONS - 1) { // Game won
-			return null;
-		} else {
-			currentQuestion++;
-			return currentQuestion();
-		}
-	}
-	
-	private void shuffleQuestions() {
-		Collections.shuffle(questionCatalog.getEasyQuestions());
-		Collections.shuffle(questionCatalog.getMediumQuestions());
-		Collections.shuffle(questionCatalog.getHardQuestions());
-		Collections.shuffle(questionCatalog.getVeryHardQuestions());
-	}
-	
-	public enum Difficulty {
-
-    	EASY(10, 4, 1, 0),
-    	MEDIUM(6, 5, 3, 1),
-    	HARD(4, 4, 5, 2);
-
-    	final int easyQuestions;
-    	final int mediumQuestions;
-    	final int hardQuestions;
-    	final int veryHardQuestions;
-    	
-    	Difficulty(int easyQuestions, int mediumQuestions, int hardQuestions, int veryHardQuestions) {
-    		this.easyQuestions = easyQuestions;
-    		this.mediumQuestions = mediumQuestions;
-    		this.hardQuestions = hardQuestions;
-    		this.veryHardQuestions = veryHardQuestions;
-    	}
-    	
-    }
+	/**
+	 * Returns true if the game is not finished yet.
+	 * 
+	 * @return true if the game is not finished yet
+	 */
+	boolean playing();
 
 }

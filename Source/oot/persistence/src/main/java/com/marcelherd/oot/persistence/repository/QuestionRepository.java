@@ -13,6 +13,12 @@ import com.marcelherd.oot.persistence.entity.Question.Difficulty;
  */
 public interface QuestionRepository extends Repository<Question, Long> {
 	
+	/**
+	 * Returns all questions with the given difficulty.
+	 * 
+	 * @param difficulty - difficulty of the questions
+	 * @return all questions with the given difficulty
+	 */
 	List<Question> findByDifficulty(Difficulty difficulty);
 	
 }

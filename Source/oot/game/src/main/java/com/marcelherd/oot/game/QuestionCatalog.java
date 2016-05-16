@@ -10,14 +10,14 @@ import com.marcelherd.oot.persistence.entity.Question;
  * 
  * @author Marcel Herd
  */
-public class MillionaerQuestionCatalog {
+public class QuestionCatalog {
 
 	private List<Question> easyQuestions;
 	private List<Question> mediumQuestions;
 	private List<Question> hardQuestions;
 	private List<Question> veryHardQuestions;
 	
-	public MillionaerQuestionCatalog(List<Question> easyQuestions, List<Question> mediumQuestions,
+	public QuestionCatalog(List<Question> easyQuestions, List<Question> mediumQuestions,
 			List<Question> hardQuestions, List<Question> veryHardQuestions) {
 		this.easyQuestions = easyQuestions;
 		this.mediumQuestions = mediumQuestions;

@@ -1,10 +1,11 @@
-package com.marcelherd.oot.persistence.entity;
+package com.marcelherd.oot.persistence.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.marcelherd.oot.persistence.entity.Question;
 import com.marcelherd.oot.persistence.entity.Question.Difficulty;
 
 /**
@@ -13,7 +14,7 @@ import com.marcelherd.oot.persistence.entity.Question.Difficulty;
  * 
  * @author Marcel Herd
  */
-public class QuestionParser {
+public class JDBCQuestionParser {
 	
 	/**
 	 * Returns the Question obtained by the resultSet.
