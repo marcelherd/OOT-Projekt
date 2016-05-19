@@ -1,23 +1,10 @@
 package com.marcelherd.oot.game;
 
 import com.marcelherd.oot.game.Game.Difficulty;
-import com.marcelherd.oot.persistence.entity.Question;
+import com.marcelherd.oot.persistence.domain.Question;
 
 /**
- * Example usage:
- * <pre>
- * {@code
- *    WerWirdMillionaer game = new MillionaerGame();
- *    game.start(Difficulty.EASY);
- *    while (game.playing()) {
- *       Question question = game.currentQuestion();
- *       String input;
- *       boolean correct = game.answer(input);
- *       if (! correct) { // antwort als rot markieren, ton abspielen... }
- *    }
- *    
- * }
- * </pre>
+ * TODO
  * 
  * @author Marcel Herd
  */

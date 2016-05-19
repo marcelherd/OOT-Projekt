@@ -3,7 +3,7 @@ package com.marcelherd.oot.persistence.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import com.marcelherd.oot.persistence.entity.Entity;
+import com.marcelherd.oot.persistence.domain.Entity;
 
 /**
  * This interface defines methods to interact with the given domain types
@@ -15,6 +15,13 @@ import com.marcelherd.oot.persistence.entity.Entity;
  * @author Marcel Herd
  */
 public interface Repository<T extends Entity, ID extends Serializable> {
+	
+	/**
+	 * Saves the given entity.
+	 * 
+	 * @param entity - entity to be saved
+	 */
+	void save(T entity);
 
 	/**
 	 * Retrieves an entity by its id.

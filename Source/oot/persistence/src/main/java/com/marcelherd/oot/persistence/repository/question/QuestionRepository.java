@@ -1,9 +1,10 @@
-package com.marcelherd.oot.persistence.repository;
+package com.marcelherd.oot.persistence.repository.question;
 
 import java.util.List;
 
-import com.marcelherd.oot.persistence.entity.Question;
-import com.marcelherd.oot.persistence.entity.Question.Difficulty;
+import com.marcelherd.oot.persistence.domain.Question;
+import com.marcelherd.oot.persistence.domain.Question.Difficulty;
+import com.marcelherd.oot.persistence.repository.Repository;
 
 /**
  * This interface defines the methods to interact with the question

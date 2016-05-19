@@ -12,26 +12,29 @@ import org.apache.commons.dbcp2.BasicDataSource;
  * @author Marcel Herd
  */
 public class Database {
-
-	private static BasicDataSource dataSource;
-
-	static {
+	
+	private BasicDataSource dataSource;
+	
+	protected Database(String driverClassName, String url) {
+		this(driverClassName, url, null, null);
+	}
+	
+	protected Database(String driverClassName, String url, String username, String password) {
 		dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("org.sqlite.JDBC");
-		dataSource.setUrl("jdbc:sqlite::resource:database.sqlite");
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(url);
+		if (username != null) dataSource.setUsername(username);
+		if (password != null) dataSource.setPassword(password);
 	}
 
 	/**
 	 * Returns the connection to the database.
 	 * 
 	 * @return the connection to the database
+	 * @throws SQLException - if connection could not be established
 	 */
-	public static Connection getConnection() {
-		try {
-			return dataSource.getConnection();
-		} catch (SQLException e) {
-			return null;
-		}
+	public Connection getConnection() throws SQLException {
+		return dataSource.getConnection();
 	}
 
 }

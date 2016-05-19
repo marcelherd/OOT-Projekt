@@ -2,7 +2,7 @@ package com.marcelherd.oot.game;
 
 import java.util.List;
 
-import com.marcelherd.oot.persistence.entity.Question;
+import com.marcelherd.oot.persistence.domain.Question;
 
 /**
  * This class acts as a container for questions for the

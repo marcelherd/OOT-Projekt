@@ -1,12 +1,12 @@
-package com.marcelherd.oot.persistence.repository;
+package com.marcelherd.oot.persistence.repository.question;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.marcelherd.oot.persistence.entity.Question;
-import com.marcelherd.oot.persistence.entity.Question.Difficulty;
+import com.marcelherd.oot.persistence.domain.Question;
+import com.marcelherd.oot.persistence.domain.Question.Difficulty;
 
 /**
  * This class provides helper methods to create Question objects
@@ -34,8 +34,6 @@ public class JDBCQuestionParser {
 			Difficulty difficulty = Difficulty.valueOf(resultSet.getString("difficulty"));
 			return new Question(id, question, answerA, answerB, answerC, answerD, correctAnswer, difficulty);
 		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -54,8 +52,6 @@ public class JDBCQuestionParser {
 			}
 			return questions;
 		} catch (SQLException e) {
-			// TODO: handle exception
-			e.printStackTrace();
 			return null;
 		}
 	}

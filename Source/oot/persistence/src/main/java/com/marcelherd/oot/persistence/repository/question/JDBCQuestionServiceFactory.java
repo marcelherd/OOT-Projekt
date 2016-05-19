@@ -1,4 +1,4 @@
-package com.marcelherd.oot.persistence.repository;
+package com.marcelherd.oot.persistence.repository.question;
 
 /**
  * This class is a factory for JDBCQuestionServices.

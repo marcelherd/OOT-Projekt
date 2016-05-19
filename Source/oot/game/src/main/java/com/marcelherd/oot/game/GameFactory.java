@@ -1,8 +1,8 @@
 package com.marcelherd.oot.game;
 
-import com.marcelherd.oot.persistence.entity.Question.Difficulty;
-import com.marcelherd.oot.persistence.repository.QuestionRepository;
-import com.marcelherd.oot.persistence.repository.JDBCQuestionServiceFactory;
+import com.marcelherd.oot.persistence.domain.Question.Difficulty;
+import com.marcelherd.oot.persistence.repository.question.JDBCQuestionServiceFactory;
+import com.marcelherd.oot.persistence.repository.question.QuestionRepository;
 
 public class GameFactory {
 	

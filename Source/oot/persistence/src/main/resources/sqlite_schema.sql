@@ -8,3 +8,10 @@ CREATE TABLE `questions` (
 	`correctAnswer`	TEXT NOT NULL,
 	`difficulty`	TEXT NOT NULL
 );
+
+CREATE TABLE `highscores` (
+	`id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`name`	TEXT NOT NULL,
+	`date`	TEXT NOT NULL,
+	`sum`	INTEGER NOT NULL
+);

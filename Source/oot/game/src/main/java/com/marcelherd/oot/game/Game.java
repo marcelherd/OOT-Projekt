@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.marcelherd.oot.persistence.entity.Question;
+import com.marcelherd.oot.persistence.domain.Question;
 
+/**
+ * Example implementation.
+ * 
+ * @author Marcel Herd
+ */
 public class Game {
 	
 	private static final int MAX_QUESTIONS = 15;

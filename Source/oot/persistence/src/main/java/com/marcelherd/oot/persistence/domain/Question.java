@@ -1,4 +1,4 @@
-package com.marcelherd.oot.persistence.entity;
+package com.marcelherd.oot.persistence.domain;
 
 /**
  * This domain type defines a question, as it is
