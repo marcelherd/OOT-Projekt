@@ -8,8 +8,8 @@ OOT Semesterprojekt IB15/16 der Gruppe "Millionär".
 
 ### Mitglieder
 
-- Christian Hahn
-- Marcel Herd (@marcelherd)
+- Christian Hahn (@coHahn) - Projektleiter
+- Marcel Herd (@marcelherd) - Designer
 - Eugen Krizki
 - Konstantin Pelevin
 - Manuel Schwalm (@Lumean97)
