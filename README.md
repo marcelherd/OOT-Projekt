@@ -1,6 +1,4 @@
-# OOT-Projekt
-
-[![Build Status](https://travis-ci.org/marcelherd/OOT-Projekt.svg?branch=master)](https://travis-ci.org/marcelherd/OOT-Projekt)
+# OOT-Projekt [![Build Status](https://travis-ci.org/marcelherd/OOT-Projekt.svg?branch=master)](https://travis-ci.org/marcelherd/OOT-Projekt)
 
 OOT Semesterprojekt IB15/16 der Gruppe "Millionär".
 
