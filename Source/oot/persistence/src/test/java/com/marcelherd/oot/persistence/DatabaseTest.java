@@ -29,7 +29,6 @@ public class DatabaseTest {
 	@Test
 	public void testConnection() throws SQLException {
 		Connection connection = database.getConnection();
-		System.out.println(database.dataSource.getUrl());
 		connection.close();
 	}
 	
