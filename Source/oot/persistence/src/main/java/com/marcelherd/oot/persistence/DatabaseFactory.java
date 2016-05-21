@@ -21,8 +21,8 @@ public class DatabaseFactory {
 	private static Database remote;
 	
 	static {
-		local = new Database("org.sqlite.JDBC", "jdbc:sqlite::resource:database.sqlite");
-		remote = new Database("org.mariadb.jdbc.Driver", "jdbc:mariadb://shishigami.eu:3306/millionaer", "millionaer", "123qwe123qwe");
+		local = new Database("org.sqlite.JDB", "jdbc:sqlite::resource:database.sqlite");
+		remote = new Database("org.mariadb.jdbc.Drive", "jdbc:mariadb://shishigami.eu:3306/millionaer", "millionaer", "123qwe123qwe");
 	}
 	
 	/**
