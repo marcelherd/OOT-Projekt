@@ -29,11 +29,10 @@ public class JDBCHighscoreParser {
 		try {
 			Long id = resultSet.getLong("id");
 			String name = resultSet.getString("name");
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			Date date = dateFormat.parse(resultSet.getString("date"));
+			Date date = resultSet.getDate("date");
 			int sum = resultSet.getInt("sum");
 			return new Highscore(id, name, date, sum);
-		} catch (SQLException | ParseException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}

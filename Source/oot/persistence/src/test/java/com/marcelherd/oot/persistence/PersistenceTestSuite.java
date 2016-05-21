@@ -4,7 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.marcelherd.oot.persistence.repository.highscore.HighscoreServiceTest;
 import com.marcelherd.oot.persistence.repository.question.QuestionServiceEmptyTest;
 import com.marcelherd.oot.persistence.repository.question.QuestionServiceTest;
 
@@ -12,8 +11,7 @@ import com.marcelherd.oot.persistence.repository.question.QuestionServiceTest;
 @SuiteClasses({
 	DatabaseTest.class,
 	QuestionServiceTest.class,
-	QuestionServiceEmptyTest.class,
-	HighscoreServiceTest.class
+	QuestionServiceEmptyTest.class
 })
 public class PersistenceTestSuite {
 
