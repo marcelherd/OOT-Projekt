@@ -131,5 +131,9 @@ public class JDBCQuestionService implements QuestionRepository {
 			return null;
 		}
 	}
+	
+	protected void setDatabase(Database database) {
+		this.database = database;
+	}
 
 }

@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests {@link com.marcelherd.oot.persistence.Database}
+ * Tests {@link com.marcelherd.oot.persistence.Database}.
  * 
  * @author Marcel Herd
  */
