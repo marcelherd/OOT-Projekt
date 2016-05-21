@@ -1,8 +1,11 @@
 package com.marcelherd.oot.persistence.repository.highscore;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,10 +29,12 @@ public class JDBCHighscoreParser {
 		try {
 			Long id = resultSet.getLong("id");
 			String name = resultSet.getString("name");
-			Date date = resultSet.getDate("date");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = dateFormat.parse(resultSet.getString("date"));
 			int sum = resultSet.getInt("sum");
 			return new Highscore(id, name, date, sum);
-		} catch (SQLException e) {
+		} catch (SQLException | ParseException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -1,7 +1,6 @@
 package com.marcelherd.oot.persistence.repository.question;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -54,15 +53,6 @@ public class QuestionServiceTest {
 		assertEquals("D", question.getAnswerD());
 		assertEquals("B", question.getCorrectAnswer());
 		assertEquals(Difficulty.HARD, question.getDifficulty());
-	}
-	
-	/**
-	 * Test method for {@link com.marcelherd.oot.persistence.repository.question.JDBCQuestionService#findOne(Long)}
-	 */
-	@Test
-	public void testFindOneNotExistent() {
-		Question question = service.findOne(-1l);
-		assertNull(question);
 	}
 	
 	/**

@@ -120,5 +120,9 @@ public class JDBCHighscoreService implements HighscoreRepository {
 			return null;
 		}
 	}
+	
+	protected void setDatabase(Database database) {
+		this.database = database;
+	}
 
 }

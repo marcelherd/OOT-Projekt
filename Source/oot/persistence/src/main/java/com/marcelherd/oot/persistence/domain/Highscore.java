@@ -1,6 +1,6 @@
 package com.marcelherd.oot.persistence.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * This domain type defines a highscore, as it is
