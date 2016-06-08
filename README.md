@@ -10,6 +10,6 @@ OOT Semesterprojekt IB15/16 der Gruppe "Millionär".
 - Marcel Herd (@marcelherd) - Designer
 - Eugen Krizki (@Eugen987) - Designer
 - Konstantin Pelevin
-- Manuel Schwalm (@Lumean97)
-- Richard Vladimirskij - Analyst
+- Manuel Schwalm (@Lumean97) - Tester
+- Richard Vladimirskij (@limecakeio) - Analyst
 - Ugur Yilmaz
