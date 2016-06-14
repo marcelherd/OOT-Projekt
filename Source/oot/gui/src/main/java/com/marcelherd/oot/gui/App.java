@@ -1,14 +1,15 @@
 package com.marcelherd.oot.gui;
 
-import com.marcelherd.oot.game.WerWirdMillionaer;
+import com.marcelherd.oot.game.Game;
+import com.marcelherd.oot.game.GameFactory;
+import com.marcelherd.oot.game.Highscores;
+import com.marcelherd.oot.game.WWMHighscores;
 
 public class App {
 
 	public static void main(String[] args) {
-		/*
-		 * All interaction between game logic and gui should use this interface.
-		 */
-		WerWirdMillionaer game = null;
+		Game game = GameFactory.newInstance();
+		Highscores highscores = new WWMHighscores();
 	}
 
 }
