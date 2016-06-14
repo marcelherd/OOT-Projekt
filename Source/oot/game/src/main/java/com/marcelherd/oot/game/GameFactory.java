@@ -13,7 +13,7 @@ public class GameFactory {
 				questionRepository.findByDifficulty(Difficulty.HARD),
 				questionRepository.findByDifficulty(Difficulty.VERY_HARD));
 
-		return new Game(catalog);
+		return new WWMGame(catalog);
 	}
 
 }
