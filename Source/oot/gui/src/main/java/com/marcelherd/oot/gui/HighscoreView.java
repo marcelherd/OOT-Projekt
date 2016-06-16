@@ -1,94 +1,82 @@
 package com.marcelherd.oot.gui;
 
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 
-public class HighscoreView extends JFrame {
+/**
+ * @author Richard Vladimirskij
+ * 
+ * HighscoreView - displays a JPanel with the current top ten winners of the WWM game.
+ * 
+ * */
 
-	private JPanel contentPane;
+
+@SuppressWarnings("serial")
+public class HighscoreView extends JPanel {
+
+	private JFrame parent;
+	private JPanel contentPanel;
 	private JLabel title;
-	private JTable scores;
-	private JButton btnExitGame;
-	private JButton btnMainMenu;
+	private JTable table;
+	private JButton backButton;
 
 	/**
-	 * Launch the application.
+	 * Create the Panel.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					HighscoreView frame = new HighscoreView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public HighscoreView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+	public HighscoreView(JFrame parent) {
+		this.parent = parent;
+		contentPanel = new JPanel();
 		
+		//Top of the panel for the title
 		JPanel panelTop = new JPanel();
 		FlowLayout flowLayout_1 = (FlowLayout) panelTop.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		title = new JLabel("Highscores");
 		panelTop.add(title);
-		contentPane.add(panelTop, BorderLayout.NORTH);
+		contentPanel.add(panelTop, BorderLayout.NORTH);
 		
+		//Center of the panel for the table
 		JPanel panelCenter = new JPanel();
-		scores = new JTable(new ScoreBoard());
+		table = new JTable(new HighscoreController());
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+//		contentPane.add(scrollPane, BorderLayout.EAST);
+//		contentPane.add(scrollPane, BorderLayout.CENTER);
+		scrollPane.setViewportView(table);
+		panelCenter.add(scrollPane);
+		contentPanel.add(panelCenter, BorderLayout.WEST);
 		
-		panelCenter.add(scores);
-		contentPane.add(panelCenter, BorderLayout.CENTER);
-		
+		//Bottom of the panel for the return to menu button
 		JPanel panelBase = new JPanel();
 		FlowLayout flowLayout = (FlowLayout) panelBase.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
 		
 		/**Main Menu button actions*/
-		btnMainMenu = new JButton("Main Menu");
-		btnMainMenu.addActionListener(new ActionListener() {
+		backButton = new JButton("Back to main menu");
+		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Main Menu Clicked");
+				parent.setView(new MainMenuView());
 			}
 		});
-		panelBase.add(btnMainMenu);
-		
-		/**Exit Game button actions*/
-		btnExitGame = new JButton("Exit Game");
-		btnExitGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Exit Game Clicked");
-			}
-		});
-		
-		
-		panelBase.add(btnExitGame);
-		contentPane.add(panelBase, BorderLayout.SOUTH);
-		
+		panelBase.add(backButton);
+
+		contentPanel.add(panelBase, BorderLayout.SOUTH);
 	}
 
 }
