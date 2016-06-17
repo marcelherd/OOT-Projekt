@@ -1,6 +1,8 @@
 package com.marcelherd.oot.gui;
 
 import javax.swing.table.AbstractTableModel;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.marcelherd.oot.game.*;
@@ -79,12 +81,10 @@ public class HighscoreController extends AbstractTableModel {
 	 * @return an ordered set of the top ten winning dates as an array of Strings.
 	 * */
 	private String[] getAllDates() {
-		Highscore h;
 		String[] dates = new String[10];
-		String date = "";
-		for(int i = 0; i < 10; i++) {
-			date = topTen.get(i).getDate() + "";
-			dates[i] = formatDate(date);
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+		for (int i = 0; i < topTen.size(); i++) {
+			dates[i] = sdf.format(topTen.get(i).getDate());
 		}
 		return dates;
 	}
@@ -125,19 +125,6 @@ public class HighscoreController extends AbstractTableModel {
 			sum += newSum.charAt(i);
 		
 		return sum;
-	}
-	
-	
-	/**
-	 * @return - a formatted output of a date to display in the European order: "DD.MM.YYYY"
-	 * @param date - a String in the format: "YYYY-MM-DD"
-	 * */
-	private String formatDate(String date) {
-		return (date.charAt(8) - '0') + (date.charAt(9) - '0') 
-				+ "." 
-				+ (date.charAt(5) - '0') + (date.charAt(6) - '0') 
-				+ "." 
-				+ (date.charAt(0) - '0') + (date.charAt(1) - '0') + (date.charAt(2) - '0') + (date.charAt(3) - '0');
 	}
 	
 	/**
