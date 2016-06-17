@@ -9,6 +9,11 @@ import com.marcelherd.oot.game.joker.JokerType;
 import com.marcelherd.oot.game.joker.TelephoneJoker;
 import com.marcelherd.oot.persistence.domain.Question;
 
+/**
+ * Wer Wird Millionaer Game implementation
+ * 
+ * @author Marcel Herd
+ */
 public class WWMGame implements Game {
 	
 	private QuestionCatalog catalog;
@@ -28,29 +33,42 @@ public class WWMGame implements Game {
 		this.telephoneJoker = new TelephoneJoker();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public QuestionTier getCurrentTier() {
 		return QuestionTier.getTier(index + 1);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public double getPotentialPrize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return getCurrentTier().getPrize();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public double getPrize() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Question getCurrentQuestion() {
-		// TODO Auto-generated method stub
-		return null;
+		return questions.get(index);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isAvailable(JokerType joker) {
 		switch (joker) {
@@ -61,33 +79,51 @@ public class WWMGame implements Game {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<String> useFiftyFiftyJoker() {
 		return fiftyFiftyJoker.execute(getCurrentQuestion());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Map<String, Double> useAudienceJoker() {
 		return audienceJoker.execute(getCurrentQuestion());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String useTelephoneJoker() {
 		return telephoneJoker.execute(getCurrentQuestion());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Question start() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean answer(String guess) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public double forfeit() {
 		// TODO Auto-generated method stub

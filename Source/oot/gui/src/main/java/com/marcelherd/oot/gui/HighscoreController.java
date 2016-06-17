@@ -25,7 +25,7 @@ public class HighscoreController extends AbstractTableModel {
 	private int columnCount;
 	private int rowCount = 10;
 	private String data[][];
-	private Highscores highscores = new WWMHighscores();
+	private Highscores highscores = HighscoresFactory.getInstance();
 	private List<Highscore> topTen = highscores.getTopTen();
 	
 	public HighscoreController() {

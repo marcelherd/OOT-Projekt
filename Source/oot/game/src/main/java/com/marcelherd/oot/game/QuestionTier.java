@@ -1,5 +1,11 @@
 package com.marcelherd.oot.game;
 
+/**
+ * This enumeration contains all the question tiers,
+ * that the game Wer Wird Millionaer defines.
+ * 
+ * @author Marcel Herd
+ */
 public enum QuestionTier {
 
 	QUESTION_1(50, true),
