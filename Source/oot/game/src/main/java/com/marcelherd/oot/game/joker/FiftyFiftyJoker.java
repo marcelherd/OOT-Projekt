@@ -44,7 +44,7 @@ public class FiftyFiftyJoker implements Joker<List<String>> {
 		if(question.getAnswerD()!=question.getCorrectAnswer())
 			list.add(question.getAnswerD());
 		
-		//delete a wrong answer at random
+		//delete a wrong answer at random 
 		list.remove(new Random().nextInt(3));
 		
 		return list;

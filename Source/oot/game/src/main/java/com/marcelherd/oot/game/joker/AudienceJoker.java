@@ -28,7 +28,7 @@ public class AudienceJoker implements Joker<Map<String, Double>> {
 	 *
 	 * This will create the correct result, even if the joker is not available for use.
 	 * 
-	 * @return a mapping between answer and percentage of the question being right
+	 * @return a mapping between answer and percentage of the question being right 
 	 */
 	@Override
 	public Map<String, Double> execute(Question question) {
