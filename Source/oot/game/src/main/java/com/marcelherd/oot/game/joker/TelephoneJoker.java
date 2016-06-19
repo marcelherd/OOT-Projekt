@@ -7,7 +7,7 @@ import java.util.Random;
 import com.marcelherd.oot.persistence.domain.Question;
 
 /**
- * This class implements the Wer Wird Millionaer telephone joker.  
+ * This class implements the Wer Wird Millionaer telephone joker.
  * 
  * @author Marcel Herd
  */
