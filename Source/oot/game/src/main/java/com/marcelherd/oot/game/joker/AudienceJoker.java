@@ -37,7 +37,7 @@ public class AudienceJoker implements Joker<Map<String, Double>> {
 		Map<String, Double> map = new HashMap<String, Double>();
 		Random random = new Random();
 		
-//		divide 50% of votes among 4 answers
+//		divide 50% of votes among 4 answers 
 		double sumPercentageFirstTwoAnswers = random.nextDouble()*50;
 		double percentageA = random.nextDouble()*sumPercentageFirstTwoAnswers,
 				percentageB = sumPercentageFirstTwoAnswers-percentageA,
