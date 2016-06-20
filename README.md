@@ -13,3 +13,10 @@ OOT Semesterprojekt IB15/16 der Gruppe "Millionär".
 - Manuel Schwalm (@Lumean97) - Tester
 - Richard Vladimirskij (@limecakeio) - Analyst
 - Ugur Yilmaz
+
+### Building
+
+Maven muss installiert sein und mit 'mvn' aufrufbar sein.
+
+Im Ordner /bin/ liegen Build-Scripts vor, die die fertige .jar samt Abhängigkeiten bauen.  
+Das Artefakt wird im selben Ordner erzeugt und bedarft keiner weiteren Installation oder Konfiguration.
