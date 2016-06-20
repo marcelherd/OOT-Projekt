@@ -1,6 +1,8 @@
 package com.marcelherd.oot.game.joker;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.marcelherd.oot.persistence.domain.Question;
 
@@ -12,7 +14,6 @@ import com.marcelherd.oot.persistence.domain.Question;
 public class FiftyFiftyJoker implements Joker<List<String>> {
 	
 	private boolean available = true;
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -31,8 +32,21 @@ public class FiftyFiftyJoker implements Joker<List<String>> {
 	@Override
 	public List<String> execute(Question question) {
 		available = false;
+		List<String> list = new ArrayList<String>();
 		
-		return null;
+		//add all wrong answers to list
+		if(question.getAnswerA()!=question.getCorrectAnswer())
+			list.add(question.getAnswerA());
+		if(question.getAnswerB()!=question.getCorrectAnswer())
+			list.add(question.getAnswerB());
+		if(question.getAnswerC()!=question.getCorrectAnswer())
+			list.add(question.getAnswerC());
+		if(question.getAnswerD()!=question.getCorrectAnswer())
+			list.add(question.getAnswerD());
+		
+		//delete a wrong answer at random
+		list.remove(new Random().nextInt(3));
+		
+		return list;
 	}
-
 }

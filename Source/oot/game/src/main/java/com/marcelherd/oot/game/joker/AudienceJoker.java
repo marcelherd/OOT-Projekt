@@ -1,6 +1,8 @@
 package com.marcelherd.oot.game.joker;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import com.marcelherd.oot.persistence.domain.Question;
 
@@ -26,13 +28,40 @@ public class AudienceJoker implements Joker<Map<String, Double>> {
 	 *
 	 * This will create the correct result, even if the joker is not available for use.
 	 * 
-	 * @return a mapping between answer and percentage of the question being right
+	 * @return a mapping between answer and percentage of the question being right 
 	 */
 	@Override
 	public Map<String, Double> execute(Question question) {
 		available = false;
 		
-		return null;
+		Map<String, Double> map = new HashMap<String, Double>();
+		Random random = new Random();
+		
+//		divide 50% of votes among 4 answers
+		double sumPercentageFirstTwoAnswers = random.nextDouble()*50;
+		double percentageA = random.nextDouble()*sumPercentageFirstTwoAnswers,
+				percentageB = sumPercentageFirstTwoAnswers-percentageA,
+				percentageC =  random.nextDouble()*(50-sumPercentageFirstTwoAnswers),
+				percentageD = 50-percentageC-sumPercentageFirstTwoAnswers;
+
+		
+//		add 50% of votes to correct answer
+		if(question.getAnswerA()==question.getCorrectAnswer())
+			percentageA += 50;
+		if(question.getAnswerB()==question.getCorrectAnswer())
+			percentageB += 50;
+		if(question.getAnswerC()==question.getCorrectAnswer())
+			percentageC += 50;
+		if(question.getAnswerD()==question.getCorrectAnswer())
+			percentageD += 50;
+		
+//		map answers and percentages
+		map.put(question.getAnswerA(), percentageA);
+		map.put(question.getAnswerB(), percentageB);
+		map.put(question.getAnswerC(), percentageC);
+		map.put(question.getAnswerD(), percentageD);
+		
+		return map;
 	}
 
 }
