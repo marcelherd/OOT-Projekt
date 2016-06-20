@@ -61,8 +61,6 @@ public class HighscoreView extends JPanel {
 		topPanel.setBackground(new Color(255, 255, 255));
 		add(topPanel, BorderLayout.NORTH);
 		title = new JLabel("Highscores");
-		ImageIcon icon = new ImageIcon("C:\\Users\\Richard\\git\\gameIocns\\trophy.png");
-		title.setIcon(icon);
 		topPanel.add(title);
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setFont(new Font("Tahoma", Font.PLAIN, 16));

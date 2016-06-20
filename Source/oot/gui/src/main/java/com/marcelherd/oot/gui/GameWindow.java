@@ -37,6 +37,7 @@ public class GameWindow extends JFrame {
 	}
 	
 	public void setView(JPanel view) {
+		getContentPane().removeAll();
 		getContentPane().add(view);
 	}
 
