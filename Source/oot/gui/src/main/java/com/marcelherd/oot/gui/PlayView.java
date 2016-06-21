@@ -173,7 +173,7 @@ public class PlayView extends JPanel {
 			highscore.setName(playerName);
 			highscore.setDate(new Date());
 			highscore.setSum((int)prize);
-			HighscoresFactory.getInstance().save(new Highscore());
+			HighscoresFactory.getInstance().save(highscore);
 			parent.setView(new GameOverView(parent, prize, playerName, won));
 		}
 		
