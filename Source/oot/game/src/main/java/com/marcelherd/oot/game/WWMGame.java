@@ -150,5 +150,20 @@ public class WWMGame implements Game {
 		if(index==0)return 0;
 		return QuestionTier.values()[index-1].getPrize();
 	}
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public int getIndex() {
+		return index;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void incrementIndex() {
+		index++;
+	}
 
 }

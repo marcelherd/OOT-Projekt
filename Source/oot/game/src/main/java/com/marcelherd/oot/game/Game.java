@@ -94,5 +94,17 @@ public interface Game {
 	 * @return the actually won prize money
 	 */
 	double forfeit();
+	
+	/**
+	 * Index of the questions
+	 * 
+	 * @return the index of the current question
+	 */
+	int getIndex();
+	/**
+	 * Increments the index
+	 */
+	void incrementIndex();
+	
 
 }
