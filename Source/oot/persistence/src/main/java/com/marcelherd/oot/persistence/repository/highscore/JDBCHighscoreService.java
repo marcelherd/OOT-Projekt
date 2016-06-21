@@ -25,15 +25,7 @@ public class JDBCHighscoreService implements HighscoreRepository {
 	 */
 	@Override
 	public void save(Highscore entity) {
-		String sql = null;
-
-		if (findOne(entity.getId()) != null) { // update
-			sql = String.format("UPDATE `highscores` SET `name`='%s', `date`='%t', `sum`='%d' WHERE `id`=%d",
-					entity.getName(), entity.getDate(), entity.getSum(), entity.getId());
-		} else { // create
-			sql = String.format("INSERT INTO `highscores` (`name`, `date`, `sum`) VALUES ('%s', '%t', '%d')",
-					entity.getName(), entity.getDate(), entity.getSum(), entity.getId());
-		}
+		String sql = String.format("INSERT INTO `highscores` (`name`, `date`, `sum`) VALUES ('%s', '" + new java.sql.Date(entity.getDate().getTime()) + "', '%d')", entity.getName(), entity.getSum());
 
 		try (Connection connection = database.getConnection(); Statement statement = connection.createStatement()) {
 			statement.executeUpdate(sql);
