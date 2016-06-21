@@ -21,24 +21,17 @@ public class GameWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public GameWindow() {
-		BorderLayout borderLayout = (BorderLayout) getContentPane().getLayout();
-		borderLayout.setVgap(10);
-		borderLayout.setHgap(10);
-		setForeground(Color.WHITE);
-		getContentPane().setBackground(new Color(255, 255, 255));
-		setBackground(SystemColor.text);
 		setTitle("Who Wants To Be A Millionaire?");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
-		HighscoreView hsv = new HighscoreView(this);
-		hsv.setBounds(0, 0, 584, 363);
-		hsv.setBackground(SystemColor.desktop);
-		getContentPane().add(hsv, BorderLayout.CENTER);
+		setSize(600, 400);
+		setLocationRelativeTo(null);
+		add(new MainMenuView(this));
 	}
 	
 	public void setView(JPanel view) {
 		getContentPane().removeAll();
-		getContentPane().add(view);
+		add(view);
+		revalidate();
 	}
 
 }
