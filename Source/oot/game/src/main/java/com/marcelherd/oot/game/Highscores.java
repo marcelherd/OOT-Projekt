@@ -17,5 +17,13 @@ public interface Highscores {
 	 * @return the top ten highscores
 	 */
 	List<Highscore> getTopTen();
+	
+	
+	/**
+	 * Saves the given highscore.
+	 * 
+	 * @param highscore - Highscore to save.
+	 */
+	void save(Highscore highscore);	
 
 }

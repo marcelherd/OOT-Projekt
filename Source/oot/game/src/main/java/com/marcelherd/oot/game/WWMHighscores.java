@@ -27,4 +27,12 @@ public class WWMHighscores implements Highscores {
 		return highscoreRepository.findTopTen();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void save(Highscore highscore) {
+		highscoreRepository.save(highscore);
+	}
+
 }
