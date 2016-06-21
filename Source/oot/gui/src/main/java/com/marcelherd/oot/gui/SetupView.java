@@ -22,6 +22,7 @@ public class SetupView extends JPanel{
 	
 	private JTextField nameField = new JTextField(15);
 	private JButton startButton = new JButton("Start");
+	private JLabel warning = new JLabel("Maximum length of name is 16 characters!");
 	public SetupView(GameWindow parent){
 		warning.setForeground(SystemColor.RED);
 		warning.setVisible(false);
@@ -52,6 +53,7 @@ public class SetupView extends JPanel{
 		nameField.addCaretListener(new CaretListener() {
 			public void caretUpdate(CaretEvent e) {
 				
+					if(nameField.getText().length() > 16){
 						warning.setVisible(true);
 						startButton.setEnabled(false);
 					}else if(!nameField.getText().equals("")){
