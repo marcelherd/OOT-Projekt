@@ -17,6 +17,8 @@ import javax.swing.BoxLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.SystemColor;
+
 import javax.swing.ScrollPaneConstants;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -75,6 +77,7 @@ public class HighscoreView extends JPanel {
 		add(centerPanel, BorderLayout.CENTER);
 		
 		tablePanel = new JPanel();
+		tablePanel.setBackground(SystemColor.white);
 		FlowLayout flowLayout_3 = (FlowLayout) tablePanel.getLayout();
 		flowLayout_3.setAlignOnBaseline(true);
 		centerPanel.add(tablePanel);
