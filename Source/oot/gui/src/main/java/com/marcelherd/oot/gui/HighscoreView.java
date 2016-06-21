@@ -53,8 +53,9 @@ public class HighscoreView extends JPanel {
 	/**
 	 * Create the Panel.
 	 */
-	public HighscoreView(JFrame parent) {
+	public HighscoreView(GameWindow parent) {
 		this.parent = parent;
+		setSize(parent.getSize());
 		setLayout(new BorderLayout(0, 0));
 		
 		topPanel = new JPanel();
@@ -97,7 +98,7 @@ public class HighscoreView extends JPanel {
 		backButton.setBackground(UIManager.getColor("Button.darkShadow"));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//parent.setView(new MainMenuView());
+				parent.setView(new MainMenuView(parent));
 			}
 		});
 	}
