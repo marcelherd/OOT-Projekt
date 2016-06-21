@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,8 @@ import javax.swing.border.LineBorder;
 
 import com.marcelherd.oot.game.Game;
 import com.marcelherd.oot.game.GameFactory;
+import com.marcelherd.oot.game.HighscoresFactory;
+import com.marcelherd.oot.persistence.domain.Highscore;
 
 public class PlayView extends JPanel {
 
@@ -116,6 +119,23 @@ public class PlayView extends JPanel {
 		answerB.setEnabled(true);
 		answerC.setEnabled(true);
 		answerD.setEnabled(true);
+		
+		
+		// CHEATING! NAME cheathaxx0r123 disables all wrong answers :P
+		if(playerName.equals("cheathaxx0r123")){
+			if(!answerA.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
+				answerA.setEnabled(false);
+			}
+			if(!answerB.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
+				answerB.setEnabled(false);
+			}
+			if(!answerC.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
+				answerC.setEnabled(false);
+			}
+			if(!answerD.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
+				answerD.setEnabled(false);
+			}
+		}
 	}
 
 
@@ -149,6 +169,11 @@ public class PlayView extends JPanel {
 		}
 		
 		private void gameOver(double prize, boolean won) {
+			Highscore highscore = new Highscore();
+			highscore.setName(playerName);
+			highscore.setDate(new Date());
+			highscore.setSum((int)prize);
+			HighscoresFactory.getInstance().save(new Highscore());
 			parent.setView(new GameOverView(parent, prize, playerName, won));
 		}
 		
