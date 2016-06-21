@@ -1,7 +1,9 @@
 package com.marcelherd.oot.game;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.marcelherd.oot.game.joker.AudienceJoker;
 import com.marcelherd.oot.game.joker.FiftyFiftyJoker;
@@ -31,6 +33,7 @@ public class WWMGame implements Game {
 		this.fiftyFiftyJoker = new FiftyFiftyJoker();
 		this.audienceJoker = new AudienceJoker();
 		this.telephoneJoker = new TelephoneJoker();
+		start();
 	}
 
 	/**
@@ -54,7 +57,11 @@ public class WWMGame implements Game {
 	 */
 	@Override
 	public double getPrize() {
-		// TODO Auto-generated method stub
+		for(int i = index-1; i>=0; i--){
+			if(QuestionTier.values()[i].isCheckpoint()){
+				return QuestionTier.values()[i].getPrize();
+			}
+		}
 		return 0;
 	}
 
@@ -109,7 +116,22 @@ public class WWMGame implements Game {
 	@Override
 	public Question start() {
 		// TODO Auto-generated method stub
-		return null;
+		Random r = new Random();
+		questions = new LinkedList<Question>();
+		
+		// Removes Questions from Catalog to prevent getting equal questions.
+		
+		for(int i = 0; i<5; i++){
+			questions.add(catalog.getEasyQuestions().remove(r.nextInt(catalog.getEasyQuestions().size())));
+		}
+		for(int i = 0; i<5; i++){
+			questions.add(catalog.getMediumQuestions().remove(r.nextInt(catalog.getMediumQuestions().size())));
+		}
+		for(int i = 0; i<4; i++){
+			questions.add(catalog.getHardQuestions().remove(r.nextInt(catalog.getHardQuestions().size())));
+		}			
+		questions.add(catalog.getVeryHardQuestions().remove(r.nextInt(catalog.getVeryHardQuestions().size())));
+		return questions.get(0);
 	}
 
 	/**
@@ -117,8 +139,7 @@ public class WWMGame implements Game {
 	 */
 	@Override
 	public boolean answer(String guess) {
-		// TODO Auto-generated method stub
-		return false;
+		return questions.get(index).getCorrectAnswer().equals(guess);
 	}
 
 	/**
@@ -126,8 +147,8 @@ public class WWMGame implements Game {
 	 */
 	@Override
 	public double forfeit() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(index==0)return 0;
+		return QuestionTier.values()[index-1].getPrize();
 	}
 
 }
