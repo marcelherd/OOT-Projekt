@@ -119,28 +119,9 @@ public class PlayView extends JPanel {
 		answerB.setEnabled(true);
 		answerC.setEnabled(true);
 		answerD.setEnabled(true);
+
 		
-		
-		// CHEATING! NAME cheathaxx0r123 disables all wrong answers :P
-		if(playerName.equals("cheathaxx0r123")){
-			if(!answerA.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
-				answerA.setEnabled(false);
-			}
-			if(!answerB.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
-				answerB.setEnabled(false);
-			}
-			if(!answerC.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
-				answerC.setEnabled(false);
-			}
-			if(!answerD.getText().equals(game.getCurrentQuestion().getCorrectAnswer())){
-				answerD.setEnabled(false);
-			}
-		}
 	}
-
-
-
-
 
 	private class PlayController implements ActionListener {
 
@@ -151,33 +132,34 @@ public class PlayView extends JPanel {
 				if (game.answer(((JButton) e.getSource()).getText().split(" - ")[0])) {
 					if (game.getIndex() == 14) {
 						gameOver(game.getPotentialPrize(), true);
+					} else {
+						game.incrementIndex();
+						update();
 					}
-					game.incrementIndex();
-					update();
 				} else {
 					gameOver(game.getPrize(), false);
 				}
 			} else if (e.getSource() == forfeit) {
 				gameOver(game.forfeit(), true);
-			}else if(e.getSource() == audienceJoker){
+			} else if (e.getSource() == audienceJoker) {
 				useAudienceJoker();
-			}else if(e.getSource() == telephoneJoker){
+			} else if (e.getSource() == telephoneJoker) {
 				useTelephoneJoker();
-			}else if(e.getSource() == fiftyFiftyJoker){
+			} else if (e.getSource() == fiftyFiftyJoker) {
 				useFiftyFiftyJoker();
 			}
 		}
-		
+
 		private void gameOver(double prize, boolean won) {
 			Highscore highscore = new Highscore();
 			highscore.setName(playerName);
 			highscore.setDate(new Date());
-			highscore.setSum((int)prize);
+			highscore.setSum((int) prize);
 			HighscoresFactory.getInstance().save(highscore);
 			parent.setView(new GameOverView(parent, prize, playerName, won));
 		}
-		
-		private void useTelephoneJoker(){
+
+		private void useTelephoneJoker() {
 			JDialog telephoneDialog = new JDialog();
 			telephoneDialog.setLayout(new FlowLayout());
 			JLabel answerLabel = new JLabel(game.useTelephoneJoker());
@@ -188,30 +170,30 @@ public class PlayView extends JPanel {
 			telephoneDialog.setVisible(true);
 			telephoneJoker.setEnabled(false);
 		}
-		
+
 		private void useAudienceJoker() {
 			Map<String, Double> audienceMap = game.useAudienceJoker();
 			answerA.setText(game.getCurrentQuestion().getAnswerA() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerA())*100)/100d + "%");
+					+ (int) (audienceMap.get(game.getCurrentQuestion().getAnswerA()) * 100) / 100d + "%");
 			answerB.setText(game.getCurrentQuestion().getAnswerB() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerB())*100)/100d + "%");
+					+ (int) (audienceMap.get(game.getCurrentQuestion().getAnswerB()) * 100) / 100d + "%");
 			answerC.setText(game.getCurrentQuestion().getAnswerC() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerC())*100)/100d + "%");
+					+ (int) (audienceMap.get(game.getCurrentQuestion().getAnswerC()) * 100) / 100d + "%");
 			answerD.setText(game.getCurrentQuestion().getAnswerD() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerD())*100)/100d + "%");
+					+ (int) (audienceMap.get(game.getCurrentQuestion().getAnswerD()) * 100) / 100d + "%");
 			audienceJoker.setEnabled(false);
 		}
-		
+
 		private void useFiftyFiftyJoker() {
 			List<String> wrongAnswers = game.useFiftyFiftyJoker();
-			for(String wrongAnswer : wrongAnswers){
-				if(wrongAnswer.equals(answerA.getText().split(" - ")[0])){
+			for (String wrongAnswer : wrongAnswers) {
+				if (wrongAnswer.equals(answerA.getText().split(" - ")[0])) {
 					answerA.setEnabled(false);
-				}else if(wrongAnswer.equals(answerB.getText().split(" - ")[0])){
+				} else if (wrongAnswer.equals(answerB.getText().split(" - ")[0])) {
 					answerB.setEnabled(false);
-				}else if(wrongAnswer.equals(answerC.getText().split(" - ")[0])){
+				} else if (wrongAnswer.equals(answerC.getText().split(" - ")[0])) {
 					answerC.setEnabled(false);
-				}else if(wrongAnswer.equals(answerD.getText().split(" - ")[0])){
+				} else if (wrongAnswer.equals(answerD.getText().split(" - ")[0])) {
 					answerD.setEnabled(false);
 				}
 			}
