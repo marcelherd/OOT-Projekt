@@ -105,7 +105,7 @@ public class PlayView extends JPanel {
 	}
 
 	private void update() {
-		potentialPrize.setText("next Prize: " + game.getPotentialPrize() + "€");
+		potentialPrize.setText(game.getPotentialPrize() + "€");
 		questionCounter.setText("Question " + (game.getIndex() + 1) + "/15");
 		question.setText(game.getCurrentQuestion().getQuestion());
 		answerA.setText(game.getCurrentQuestion().getAnswerA());
@@ -130,15 +130,15 @@ public class PlayView extends JPanel {
 					|| e.getSource() == answerD) {
 				if (game.answer(((JButton) e.getSource()).getText().split(" - ")[0])) {
 					if (game.getIndex() == 14) {
-						gameOver(game.getPotentialPrize());
+						gameOver(game.getPotentialPrize(), true);
 					}
 					game.incrementIndex();
 					update();
 				} else {
-					gameOver(game.getPrize());
+					gameOver(game.getPrize(), false);
 				}
 			} else if (e.getSource() == forfeit) {
-				gameOver(game.forfeit());
+				gameOver(game.forfeit(), true);
 			}else if(e.getSource() == audienceJoker){
 				useAudienceJoker();
 			}else if(e.getSource() == telephoneJoker){
@@ -148,8 +148,8 @@ public class PlayView extends JPanel {
 			}
 		}
 		
-		private void gameOver(double prize) {
-			parent.setView(new GameOverView(parent, prize, playerName));
+		private void gameOver(double prize, boolean won) {
+			parent.setView(new GameOverView(parent, prize, playerName, won));
 		}
 		
 		private void useTelephoneJoker(){
@@ -167,13 +167,13 @@ public class PlayView extends JPanel {
 		private void useAudienceJoker() {
 			Map<String, Double> audienceMap = game.useAudienceJoker();
 			answerA.setText(game.getCurrentQuestion().getAnswerA() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerA())*100)/100 + "%");
+					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerA())*100)/100d + "%");
 			answerB.setText(game.getCurrentQuestion().getAnswerB() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerB())*100)/100 + "%");
+					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerB())*100)/100d + "%");
 			answerC.setText(game.getCurrentQuestion().getAnswerC() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerC())*100)/100 + "%");
+					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerC())*100)/100d + "%");
 			answerD.setText(game.getCurrentQuestion().getAnswerD() + " - "
-					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerD())*100)/100 + "%");
+					+ (int)(audienceMap.get(game.getCurrentQuestion().getAnswerD())*100)/100d + "%");
 			audienceJoker.setEnabled(false);
 		}
 		
