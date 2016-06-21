@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.io.Reader;
 
 import com.marcelherd.oot.persistence.domain.Question;
@@ -13,17 +14,34 @@ import com.marcelherd.oot.persistence.domain.Question.Difficulty;
  * @author Richard Vladimirskij
  * 
  * QuestionCreator - parses a Tab-Separated-Value file into the Question Database for WWM.
- * The file needs the format: QUESTION|ANSWER A|ANSWER B|ANSWER C|ANSWER D|CORRECT ANSWER|DIFFICULTY
- * per line. Also you need to ensure the question array is initiated with the correct length before you execute this program.
- * Finally, you may need to change the directory the file is loaded from.
+ * The file-contents need the following format: QUESTION|ANSWER A|ANSWER B|ANSWER C|ANSWER D|CORRECT ANSWER|DIFFICULTY
+ * per line. Finally, you may need to change the directory the file is loaded from.
  * */
 
 
 public class QuestionCreator {
 
 	public static void main(String[] args) {
+		
+		String filename = "c://wwm-questions-final.csv"; //The absolute path to the raw question file 
+		
+		//Get the amount of questions we need to import
+		int qAmount = 0;
+		try {
+			LineNumberReader lnr = new LineNumberReader(new BufferedReader(new FileReader(filename)));
+			while(lnr.ready()) {
+				lnr.readLine();
+			qAmount++;
+			}
+			lnr.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace(); 
+			}
+		
 		//Set-up column arrays
-		String[] questions = new String[20];
+		String[] questions = new String[qAmount];
 		String[] answerAs = new String[questions.length];
 		String[] answerBs = new String[questions.length];
 		String[] answerCs = new String[questions.length];
@@ -34,7 +52,7 @@ public class QuestionCreator {
 		
 		//Set-up reader and populate the individual arrays
 		try {
-			Reader fr = new BufferedReader(new FileReader("c:/easy-questions.csv"));
+			Reader fr = new BufferedReader(new FileReader(filename));
 			
 			//Go through the file and separate data into the correct arrays
 			int i = 0;
@@ -116,10 +134,8 @@ public class QuestionCreator {
 		fr.close();
 		
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -155,7 +171,7 @@ public class QuestionCreator {
 			qs.save(payload[i]);
 		
 		
-		System.out.println("Successfully saved question.");
+		System.out.println("Successfully added " + qAmount + " questions to the database.");
 	}
 
 }
