@@ -35,18 +35,17 @@ public class FiftyFiftyJoker implements Joker<List<String>> {
 		List<String> list = new ArrayList<String>();
 		
 		//add all wrong answers to list
-		if(question.getAnswerA()!=question.getCorrectAnswer())
+		if(!question.getAnswerA().equals(question.getCorrectAnswer()))
 			list.add(question.getAnswerA());
-		if(question.getAnswerB()!=question.getCorrectAnswer())
+		if(!question.getAnswerB().equals(question.getCorrectAnswer()))
 			list.add(question.getAnswerB());
-		if(question.getAnswerC()!=question.getCorrectAnswer())
+		if(!question.getAnswerC().equals(question.getCorrectAnswer()))
 			list.add(question.getAnswerC());
-		if(question.getAnswerD()!=question.getCorrectAnswer())
+		if(!question.getAnswerD().equals(question.getCorrectAnswer()))
 			list.add(question.getAnswerD());
 		
 		//delete a wrong answer at random
 		list.remove(new Random().nextInt(3));
-		
 		return list;
 	}
 }

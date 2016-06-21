@@ -46,14 +46,19 @@ public class AudienceJoker implements Joker<Map<String, Double>> {
 
 		
 //		add 50% of votes to correct answer
-		if(question.getAnswerA()==question.getCorrectAnswer())
+		if(question.getAnswerA().equals(question.getCorrectAnswer()))
 			percentageA += 50;
-		if(question.getAnswerB()==question.getCorrectAnswer())
+		if(question.getAnswerB().equals(question.getCorrectAnswer()))
 			percentageB += 50;
-		if(question.getAnswerC()==question.getCorrectAnswer())
+		if(question.getAnswerC().equals(question.getCorrectAnswer()))
 			percentageC += 50;
-		if(question.getAnswerD()==question.getCorrectAnswer())
+		if(question.getAnswerD().equals(question.getCorrectAnswer()))
 			percentageD += 50;
+		System.out.println(percentageA + " " + question.getAnswerA());
+		System.out.println(percentageB + " " + question.getAnswerB());
+		System.out.println(percentageC + " " + question.getAnswerC());
+		System.out.println(percentageD + " " + question.getAnswerD());
+		System.out.println(question.getCorrectAnswer());
 		
 //		map answers and percentages
 		map.put(question.getAnswerA(), percentageA);
