@@ -119,7 +119,7 @@ public class PlayView extends JPanel {
 		answerB.setEnabled(true);
 		answerC.setEnabled(true);
 		answerD.setEnabled(true);
-		
+		System.out.println("Correct answer: " + game.getCurrentQuestion().getCorrectAnswer());
 	}
 
 	private class PlayController implements ActionListener {
