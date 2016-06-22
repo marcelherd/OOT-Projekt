@@ -10,27 +10,13 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.SystemColor;
-
-import javax.swing.ScrollPaneConstants;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.CardLayout;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-
 import java.awt.Color;
-import javax.swing.ImageIcon;
 
 /**
  * @author Richard Vladimirskij
@@ -43,6 +29,7 @@ import javax.swing.ImageIcon;
 @SuppressWarnings("serial")
 public class HighscoreView extends JPanel {
 
+	@SuppressWarnings("unused")
 	private JFrame parent;
 	private JLabel title;
 	private JTable table;
@@ -94,7 +81,6 @@ public class HighscoreView extends JPanel {
 		
 		basePanel = new JPanel();
 		basePanel.setBackground(new Color(255, 255, 255));
-		FlowLayout flowLayout = (FlowLayout) basePanel.getLayout();
 		add(basePanel, BorderLayout.SOUTH);
 		backButton = new JButton("Main menu");
 		basePanel.add(backButton);
