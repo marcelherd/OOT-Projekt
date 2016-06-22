@@ -76,9 +76,8 @@ public interface Game {
 	 * Starting the game is defined as randomly selecting 15 questions
 	 * with increasing difficulty.
 	 * 
-	 * @return the first question
 	 */
-	Question start();
+	void start();
 	
 	/**
 	 * Returns true, if guess is the correct answer to the current question.

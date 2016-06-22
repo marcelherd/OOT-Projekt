@@ -119,7 +119,6 @@ public class PlayView extends JPanel {
 		answerB.setEnabled(true);
 		answerC.setEnabled(true);
 		answerD.setEnabled(true);
-
 		
 	}
 

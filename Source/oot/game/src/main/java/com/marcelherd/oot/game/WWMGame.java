@@ -114,7 +114,7 @@ public class WWMGame implements Game {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Question start() {
+	public void start() {
 		// TODO Auto-generated method stub
 		Random r = new Random();
 		questions = new LinkedList<Question>();
@@ -131,7 +131,6 @@ public class WWMGame implements Game {
 			questions.add(catalog.getHardQuestions().remove(r.nextInt(catalog.getHardQuestions().size())));
 		}			
 		questions.add(catalog.getVeryHardQuestions().remove(r.nextInt(catalog.getVeryHardQuestions().size())));
-		return questions.get(0);
 	}
 
 	/**

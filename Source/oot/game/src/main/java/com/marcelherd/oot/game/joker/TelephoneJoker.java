@@ -13,7 +13,7 @@ import com.marcelherd.oot.persistence.domain.Question;
  */
 public class TelephoneJoker implements Joker<String> {
 	
-	private boolean available;
+	private boolean available = true;
 
 	/**
 	 * {@inheritDoc}
@@ -36,7 +36,7 @@ public class TelephoneJoker implements Joker<String> {
 		Random random = new Random();
 		
 		//simulate 75% chance of joker returning the right answer
-		if(0!=random.nextInt(3)){
+		if(0!=random.nextInt(4)){
 			//return right answer
 			return "I think that " + question.getCorrectAnswer() + " is the right answer.";
 		}else{

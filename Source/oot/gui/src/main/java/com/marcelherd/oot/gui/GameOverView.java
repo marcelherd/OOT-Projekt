@@ -29,12 +29,12 @@ public class GameOverView extends JPanel {
 		
 		
 		if(!won){
-			winnerLabel = new JLabel("Sorry, " + playerName + ". You didn't win anything!");
+			winnerLabel = new JLabel("Sorry, " + playerName + ". Your last answer was wrong. But you still won: " + prize + "€!");
 		}else {
 			winnerLabel = new JLabel("Congratulations, " + playerName + "! You won: " + prize + "€");
 		} 
 		if(prize == 0){
-			winnerLabel = new JLabel("Sorry, " + playerName + ". Your last answer was wrong. But you still won: " + prize + "€!");
+			winnerLabel = new JLabel("Sorry, " + playerName + ". You didn't win anything!");
 		}
 		winnerLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 
