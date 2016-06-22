@@ -113,14 +113,14 @@ public class HighscoreController extends AbstractTableModel {
 		
 		//Accurately set dividing points by building the sum back-to-front
 		for(int i = sum.length()-1, k = 0; i >= 0 && k <= sum.length()-1; i--, k++){
-				if(k == 3 || k== 7)
+				if(k == 3 || k== 6)
 					newSum += ".";
 				newSum += sum.charAt(i);
 			}
 		newSum += " €";
 		
 		//Reverse the sum to have it facing the right way
-		sum = ""; //reset sum
+		sum = ""; //reset sum before rebuild
 		for(int i = newSum.length()-1; i >= 0; i--)
 			sum += newSum.charAt(i);
 		
